@@ -22,26 +22,29 @@ class Solution {
      * @return Integer[]
      */
     function twoSum($nums, $target) {
-        $result = [];
-
         foreach ($nums as $key => $item) {
-            if(in_array(($target - $item), $nums)){
-                $key2 = array_search($target - $item, $nums);
-                if($key == $key2){
+            $goalKey = array_search($target - $item, $nums);
+            if($goalKey !== false){
+                if($key == $goalKey){
                     continue;
                 }
-                $result = [$key, $key2];
-                break;
+                return [$key, $goalKey];
             }
         }
-        return $result;
+
+        return [];
     }
+    
 }
 
-$nums = [2, 7, 11, 15];
+// $nums = [2, 7, 11, 15];
+// $target = 9;
 // $nums = [3,2,4];
-$target = 9;
+// $nums = [3,3];
 // $target = 6;
+$nums = [0,4,3,0];
+$target = 0;
+
 
 $solution = new Solution();
 
