@@ -26,7 +26,11 @@ class Solution {
 
         foreach ($nums as $key => $item) {
             if(in_array(($target - $item), $nums)){
-                $result = [$key, array_search($target - $item, $nums)];
+                $key2 = array_search($target - $item, $nums);
+                if($key == $key2){
+                    continue;
+                }
+                $result = [$key, $key2];
                 break;
             }
         }
@@ -35,7 +39,9 @@ class Solution {
 }
 
 $nums = [2, 7, 11, 15];
+// $nums = [3,2,4];
 $target = 9;
+// $target = 6;
 
 $solution = new Solution();
 
